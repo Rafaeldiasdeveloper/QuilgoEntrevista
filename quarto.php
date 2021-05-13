@@ -1,27 +1,27 @@
 <?php
-
 function SequenciaCrescente($array){
     $arr=$array;
-    $i=sizeof($arr);
+    $i=sizeof($arr,1);
     $remover=0;
     $anterior=$arr[0];
-
-
-    for($count=0;$count<$i;$count++){
-        if($count>1){   
-            $anterior=$arr[$count-1];
-        }
-        if($arr[$count]<$anterior){
-            $remover=$remover+1;
-        }
-    }
-    if($remover>1){
-        echo "false";
-    }else{
-        echo "true";
-    }
+    $retorno;
+    for($count=0;$count<$i-1;$count++){
+   		if($i==2){
+        	return  "TRUE";
+        }if($arr[$count+1]<=$arr[$count]){
+              $remover++;
+              $t1= $count+2<$i && $arr[$count+2]<=$arr[$count];
+              $t2= $count-1>=0  && $arr[$count+1]<=$arr[$count-1];
+              if($t1 && $t2 || $remover>=2)
+              	return "FALSE";
+   		  }
+   }
+   return "TRUE";
+    
+        
+        
+    
 }
-
-SequenciaCrescente([123, -17, -5, 1, 2, 3, 12, 43, 45]);
+echo( SequenciaCrescente([3, 6, 5, 8, 10, 20, 15] ) );
 
 ?>
